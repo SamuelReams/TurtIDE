@@ -1,0 +1,166 @@
+<!--<!DOCTYPE html>-->
+<html>
+    <head>
+        <link rel="stylesheet" src="assets/styles/prism.css">
+        <!--<link rel="stylesheet" src="assets/styles/buttons.css">-->
+        
+        <script src='ace.js'></script>
+        <script src='prism.js'></script>
+        <script src='assets/presets/presets.js'></script>
+        <style>
+            html,body { margin:0; padding:0; height:100%; width:100%; overflow:hidden;}
+            #editor {
+                height:80%;
+                width:50%;
+                display:inline-block;
+                background-color: whitesmoke;
+            }
+            #iframe{
+                height:80%;
+                display:inline-block;
+                width:50%;
+            }
+            #container {
+                height:90%;
+                width:auto;
+                white-space:nowrap;
+                overflow:hidden;
+            }
+            #menu {
+                height:10%;
+                width: 100%;
+                white-space:nowrap;
+                overflow:hidden;
+                background-color: silver;
+            }
+            #thing {
+                
+            }
+     
+ 
+            .butt {
+                margin-top: 10px;
+                margin-left: 10px;
+                -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+                box-shadow:inset 0px 1px 0px 0px #ffffff;
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+                background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+                background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+                background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+                background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+                background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+                background-color:#ededed;
+                -moz-border-radius:6px;
+                -webkit-border-radius:6px;
+                border-radius:6px;
+                border:1px solid #dcdcdc;
+                display:inline-block;
+                cursor:pointer;
+                color:#777777;
+                font-family:Arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 24px;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #ffffff;
+            }
+            .butt:hover {
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+                background:-moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background:-webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background:-o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background:-ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+                background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+                background-color:#dfdfdf;
+            }
+            .butt:active {
+                position:relative;
+                top:1px;
+            }
+        </style>
+    </head>
+    <body onload='ready()'>
+        <div id='container'>
+        <div id='menu'>
+            <button onclick='blank();' class='butt'>New</button>
+            <button onclick='p5project();'class='butt'>P5</button>
+            <!--<button onclick='processingproject();'class='butt'>Processing</button>-->
+            <!--<button onclick='brainproject();'class='butt'>BrainJS</button>-->
+            <button onclick='annyangs();' class='butt'>Annyang</button>
+            <!--<button onclick='turt2d();' class='butt'>Turt2D</button>-->
+            <button onclick='threejs();' class='butt'>ThreeJS</button>
+        </div>
+        <div id="thing">
+            <div id='editor'></div>
+            <iframe id='iframe' frameBorder='0'></iframe>
+        </div>  
+        </div>
+        <script>
+            function update() {
+                var idoc = document.getElementById('iframe').contentWindow.document;
+                idoc.open();
+                idoc.write(editor.getValue());
+                idoc.close();
+            }
+            function threejs() {
+                editor.setValue(threejsproject);
+            }
+            function turt2d() {
+                editor.setValue(turt2dproject);
+            }
+            function annyangs() {
+                editor.setValue(annyangproj);
+            }
+            function processingproject() {
+                editor.setValue(processing, 1);
+            }
+            function p5project() {
+                editor.setValue(p5, 1);
+            }
+            function brainproject() {
+                editor.setValue(brain, 1);
+            }
+            function blank() {
+                editor.setValue(boilerplate,1);
+            }
+            function setupEditor(type) {
+                window.editor = ace.edit("editor");
+                editor.setTheme("ace/theme/monokai");
+                editor.getSession().setMode("ace/mode/html");
+                editor.setValue(`<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+</body>
+
+</html>`,1); //1 = moves cursor to end
+
+                editor.getSession().on('change', function() {
+                    update();
+                });
+                
+                editor.focus();
+  
+  
+                editor.setOptions({
+                    fontSize: "16pt",
+                    showLineNumbers: false,
+                    showGutter: false,
+                    vScrollBarAlwaysVisible:true,
+                    enableBasicAutocompletion: false, enableLiveAutocompletion: false
+                });
+
+                editor.setShowPrintMargin(false);
+                editor.setBehavioursEnabled(false);  
+            }
+            function ready() {
+                setupEditor();
+            }    
+        </script>
+    </body>
+</html>
