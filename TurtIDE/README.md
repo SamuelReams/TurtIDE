@@ -1,4 +1,4 @@
-# TurtIDE
+# TurtIDE :turtle:
 -----------------------------
 
 Ide for browser.
@@ -18,4 +18,5 @@ Includes: P5, ThreeJS, and some others idk
 
 ### You're Welcome.
 -----------------------------
- - Samuel
+ -Samuel
+# :turtle:
