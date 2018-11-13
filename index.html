@@ -1,13 +1,14 @@
 <!--<!DOCTYPE html>-->
 <html>
     <head>
-        <link rel="icon" href="favicon.png" type="image/x-icon"/>
-        <link rel="stylesheet" src="TurtIDE/assets/styles/prism.css">
-        <!--<link rel="stylesheet" src="TurtIDE/assets/styles/buttons.css">-->
-        <title> TurtIDE </title>
-        <script src='TurtIDE/ace.js'></script>
-        <script src='TurtIDE/prism.js'></script>
-        <script src='TurtIDE/assets/presets/presets.js'></script>
+				<link rel="icon" href="favicon.png" type="image/x-icon"/>
+        <link rel="stylesheet" src="assets/styles/prism.css">
+        <!--<link rel="stylesheet" src="assets/styles/buttons.css">-->
+        
+        <script src='ace.js'></script>
+        <script src='prism.js'></script>
+        <script src='assets/presets/presets.js'></script>
+			<title> TurtIDE </title>
         <style>
             html,body { margin:0; padding:0; height:100%; width:100%; overflow:hidden;}
             #editor {
@@ -93,6 +94,7 @@
             <button onclick='annyangs();' class='butt'>Annyang</button>
             <!--<button onclick='turt2d();' class='butt'>Turt2D</button>-->
             <button onclick='threejs();' class='butt'>ThreeJS</button>
+					<button onclick='run();' class='butt' >Run</button>
         </div>
         <div id="thing">
             <div id='editor'></div>
@@ -100,6 +102,9 @@
         </div>  
         </div>
         <script>
+						function run() {
+							update();
+						}
             function update() {
                 var idoc = document.getElementById('iframe').contentWindow.document;
                 idoc.open();
@@ -140,10 +145,10 @@
 </body>
 
 </html>`,1); //1 = moves cursor to end
-
-                editor.getSession().on('change', function() {
+								/* YEAH BOI. auto update */
+                /*editor.getSession().on('change', function() {
                     update();
-                });
+                });*/
                 
                 editor.focus();
   
