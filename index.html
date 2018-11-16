@@ -8,6 +8,7 @@
         <script src='TurtIDE/ace.js'></script>
         <script src='TurtIDE/prism.js'></script>
         <script src='TurtIDE/assets/presets/presets.js'></script>
+        <script src='TurtIDE/assets/presets/skulpt.js'></script>
         <style>
             html,body { margin:0; padding:0; height:100%; width:100%; overflow:hidden;}
             #editor {
@@ -93,6 +94,8 @@
             <button onclick='annyangs();' class='butt'>Annyang</button>
             <!--<button onclick='turt2d();' class='butt'>Turt2D</button>-->
             <button onclick='threejs();' class='butt'>ThreeJS</button>
+            
+            <button onclick='skulptThing();' class='butt'>Skulpt</button>
         </div>
         <div id="thing">
             <div id='editor'></div>
@@ -105,6 +108,9 @@
                 idoc.open();
                 idoc.write(editor.getValue());
                 idoc.close();
+            }
+            function skulptThing() {
+                editor.setValue(skulpt);
             }
             function threejs() {
                 editor.setValue(threejsproject);
